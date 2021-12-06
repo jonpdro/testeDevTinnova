@@ -68,4 +68,4 @@ ng serve --open
 
 #### Sobre o 5° exercício:
 
-Por falta de tempo eu consegui concluir e assim cumprindo todos os requisitos, dando uma porcentagem de processo de 90% para o back-end e 85% para o front-end. Minhas sinceras desculpas! 😓
+Por falta de tempo eu consegui concluir e assim não cumprindo todos os requisitos, dando uma porcentagem de progresso de 90% para o back-end e 85% para o front-end. Minhas sinceras <strong>desculpas!</strong> 😓
