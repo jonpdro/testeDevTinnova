@@ -1,0 +1,48 @@
+<div class="container mt-5 mb-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-auto">
+            <div class="card border-dark">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Veículos</h5>
+                        <h6 class="card-subtitle mb-3 text-muted">Todos os veículos disponivéis.</h6>
+                        <table class="table ">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Veículo</th>
+                                    <th scope="col">Marca</th>
+                                    <th scope="col">Ano</th>
+                                    <th scope="col">Descricao</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody class="w-75">
+                                <tr *ngFor="let row of listarVeiculos">
+                                    <th scope="row">{{ row.id }}</th>
+                                    <td>{{ row.veiculo }}</td>
+                                    <td>{{ row.marca }}</td>
+                                    <td>{{ row.ano }}</td>
+                                    <td>{{ row.descricao }}</td>
+                                    <td id="status">{{ row.vendido | status}}</td>
+                                    <td id="status">
+                                        <a [routerLink]="['/atualizar', row.id]">
+                                            <i class="material-icons edit pr-2">
+                                                edit
+                                            </i>
+                                        </a>
+                                        <a [routerLink]="['/deletar', row.id]">
+                                            <i class="material-icons delete">
+                                                delete
+                                            </i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
