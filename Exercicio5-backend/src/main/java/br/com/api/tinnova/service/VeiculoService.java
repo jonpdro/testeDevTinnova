@@ -20,10 +20,11 @@ import br.com.api.tinnova.repository.VeiculoRepository;
 @Service
 public class VeiculoService {
 
+	// Injeção de depedencia
 	@Autowired
 	private VeiculoRepository repository;
 
-	
+	// MÉTODOS que fará a requisições HTTP GET
 	public List<String> apenasDisponiveis() {
 		return repository.apenasDisponiveis();
 	}
@@ -44,10 +45,12 @@ public class VeiculoService {
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 
+	// Método que fará a requisição HTTP POST
 	public ResponseEntity<Veiculo> createEntity(Veiculo Veiculo) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(Veiculo));
 	}
 
+	// Método que fará a requisição HTTP PUT
 	public ResponseEntity<Veiculo> updateEntity(Veiculo Veiculo, long id) {
 		Optional<Veiculo> pegarId = repository.findById(id);
 
@@ -69,6 +72,7 @@ public class VeiculoService {
 		}
 	}
 
+	// Método que fará a requisição HTTP PATCH
 	public ResponseEntity<Veiculo> updateOnlyAttribute(@RequestBody Map<String, Object> fields, @PathVariable long id) {
 		Optional<Veiculo> pegarId = repository.findById(id);
 
@@ -82,6 +86,7 @@ public class VeiculoService {
 		return ResponseEntity.ok(repository.save(Veiculo));
 	}
 
+	// Método que fará a requisição HTTP DELETE
 	public void deleteAtrribute(long id) {
 		repository.deleteById(id);
 	}

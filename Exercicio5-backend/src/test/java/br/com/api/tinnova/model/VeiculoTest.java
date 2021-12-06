@@ -19,19 +19,26 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class VeiculoTest {
 
+	// Instanciamento de objetos
 	public Veiculo veiculo;
 	public Veiculo veiculoNulo = new Veiculo();
 	
+	// Injeção de dependencia e instanciamento
 	@Autowired
 	private ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 
+	// Instanciamento
 	Validator validator = factory.getValidator();
 
+	// Primeiro processo que o test irá fazer
 	@BeforeEach
 	public void start() {
+		
+		// Atribuir dados ao objeto instanciados
 		veiculo = new Veiculo(0L, "Carro", "Honda", 2021, "", false);
 	}
 	
+	// TESTE AVALIANDO SE O OBJETO NÃO É NULO
 	@Test
 	@DisplayName("✔ Valida Atributos Não Nulos")
 	void testValidaAtributos() {
@@ -42,6 +49,7 @@ public class VeiculoTest {
 		assertTrue(violacao.isEmpty());
 	}
 	
+	// TESTE AVALIANDO SE O OBJETO É NULO
 	@Test
 	@DisplayName("✖ Não Valida Atributos Nulos")
 	void testNaoValidaAtributos() {

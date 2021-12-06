@@ -12,10 +12,12 @@ import javax.validation.constraints.NotNull;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
+// Declaração que é uma entidade no banco de dados
 @Entity
 @Table(name = "base_veiculo")
 public class Veiculo {
 
+	// Váriaveis que serão convertidas em atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -38,11 +40,13 @@ public class Veiculo {
 
 	@LastModifiedDate
 	private Date updated;
-
+	
+	// Construtor vazio
 	public Veiculo() {
 		super();
 	}
 
+	// Construtor
 	public Veiculo(long id, @NotNull String veiculo, @NotNull String marca, @NotNull int ano, String descricao,
 			boolean vendido) {
 		super();
@@ -54,6 +58,7 @@ public class Veiculo {
 		this.vendido = vendido;
 	}
 
+	// Getters and Setters
 	public long getId() {
 		return id;
 	}

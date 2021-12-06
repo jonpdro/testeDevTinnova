@@ -25,14 +25,17 @@ import br.com.api.tinnova.service.VeiculoService;
 @CrossOrigin(allowedHeaders = "*", origins = "*")
 public class VeiculoController {
 	
+	// Injeção de dependencia
 	@Autowired
 	private VeiculoService service;
 
+	// Requisição HTTP GET
 	@GetMapping()
 	public ResponseEntity<List<Veiculo>> getAll() {
 		return service.findAll();
 	}
 
+	// Requisição HTTP GET
 	@GetMapping("/find")
 	public List<String> getParam(@RequestParam("q") String text) {
 		switch (text) {
@@ -48,31 +51,37 @@ public class VeiculoController {
 		return null;
 	}
 
+	// Requisição HTTP GET
 	@GetMapping("/{id}")
 	public ResponseEntity<Veiculo> getById(@PathVariable long id) {
 		return service.findById(id);
 	}
 
+	// Requisição HTTP POST
 	@PostMapping()
 	public ResponseEntity<Veiculo> post(@RequestBody Veiculo Veiculo) {
 		return service.createEntity(Veiculo);
 	}
 
+	// Requisição HTTP PUT
 	@PutMapping("/{id}")
 	public ResponseEntity<Veiculo> put(@RequestBody Veiculo Veiculo, @PathVariable long id) {
 		return service.updateEntity(Veiculo, id);
 	}
 
+	// Requisição HTTP PATCH
 	@PatchMapping("/{id}")
 	public ResponseEntity<Veiculo> patch(@RequestBody Map<String, Object> fields, @PathVariable Long id) {
 		return service.updateOnlyAttribute(fields, id);
 	}
 
+	// Requisição HTTP DELETE
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable long id) {
 		service.deleteAtrribute(id);
 	}
 	
+	// Requisição HTTP GET
 	@GetMapping("/status")
 	public ResponseEntity<List<Veiculo>> getStatus() {
 		return service.getStatus();

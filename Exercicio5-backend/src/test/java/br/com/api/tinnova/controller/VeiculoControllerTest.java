@@ -28,18 +28,23 @@ import br.com.api.tinnova.repository.VeiculoRepository;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class VeiculoControllerTest {
 
+	// Injeção de dependencia
 	@Autowired
 	private TestRestTemplate testRestTemplate;
 
+	// Instanciamento de objetos
 	public Veiculo veiculo;
 	public Veiculo veiculoUpdate;
 
+	// Injeção de dependencia
 	@Autowired
 	private VeiculoRepository repository;
 
+	// Primeiro processo que o test irá fazer
 	@BeforeEach
 	public void start() throws ParseException {
 
+		// Atribuir dados ao objetos instanciados
 		veiculo = new Veiculo(1, "Carro", "BMW", 2021, "", false);
 		if (!repository.findById(veiculo.getId()).isPresent()) {
 			HttpEntity<Veiculo> request = new HttpEntity<Veiculo>(veiculo);
@@ -50,6 +55,8 @@ public class VeiculoControllerTest {
 
 	}
 
+	
+	// TESTES PARA CADASTRAR VEICULO
 	@Test
 	@Order(1)
 	@DisplayName("Cadastrar Veiculo")
@@ -62,6 +69,7 @@ public class VeiculoControllerTest {
 		assertEquals(HttpStatus.CREATED, resposta.getStatusCode());
 	}
 
+	// TESTES PARA LISTAR VEICULO
 	@Test
 	@Order(2)
 	@DisplayName("Listar Veiculos")
@@ -71,6 +79,7 @@ public class VeiculoControllerTest {
 		assertEquals(HttpStatus.OK, resposta.getStatusCode());
 	}
 
+	// TESTES PARA ALTERAR VEICULO
 	@Test
 	@Order(3)
 	@DisplayName("Alterar Veiculos")
@@ -83,6 +92,7 @@ public class VeiculoControllerTest {
 		assertEquals(HttpStatus.OK, resposta.getStatusCode());
 	}
 
+	// TESTES PARA DELETAR VEICULO
 	@Test
 	@Order(4)
 	@DisplayName("Deletar Veiculo")
